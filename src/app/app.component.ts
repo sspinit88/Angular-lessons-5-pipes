@@ -103,8 +103,8 @@ import {Component} from '@angular/core';
             <hr>
             <ul class="list-group">
                 <li class="list-group-item"
-                    *ngFor="let car of cars | carFilter:inputText; let i = index">
-                    <i>{{i + 1}} </i> <b>{{car.name}}</b>
+                    *ngFor="let car of cars | carFilter:inputText:'year'; let i = index">
+                    {{i + 1}} - <b>{{car.name}}</b> - <i>Модель {{car.year}} года выпуска</i>
                 </li>
             </ul>
         </div>
@@ -127,14 +127,14 @@ export class AppComponent {
             }
     };
     // создание динамического фильтра
-    inputText = 'Default';
+    inputText = '';
     cars = [
-        {name: 'Ford'},
-        {name: 'Mazda'},
-        {name: 'Audi'},
-        {name: 'BMW'},
-        {name: 'Mercedes'},
-        {name: 'ZAZ'},
+        {name: 'Ford', year: '1970'},
+        {name: 'Mazda', year: '1980'},
+        {name: 'Audi', year: '1965'},
+        {name: 'BMW', year: '1937'},
+        {name: 'Mercedes', year: '1970'},
+        {name: 'ZAZ', year: '1957'},
     ];
 
 
