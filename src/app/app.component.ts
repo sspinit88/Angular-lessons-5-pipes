@@ -94,12 +94,17 @@ import {Component} from '@angular/core';
                 Cоздание динамического фильтра
             </h2>
             <input type="text"
-                   ([ngModel])="searchCar()"
-                   class="form-control" style="margin-bottom: 20px">
+                   [(ngModel)]="inputText"
+                   class="form-control"
+                   style="margin-bottom: 20px">
+            <hr>
+            <span>Введено:</span>
+            <p>{{inputText}}</p>
+            <hr>
             <ul class="list-group">
                 <li class="list-group-item"
-                    *ngFor="let car of cars | carFilter:searchCar; let i = index">
-                    <i>{{i + 1}}</i> - <b>{{car.name}}</b>
+                    *ngFor="let car of cars | carFilter:inputText; let i = index">
+                    <i>{{i + 1}} </i> <b>{{car.name}}</b>
                 </li>
             </ul>
         </div>
@@ -122,13 +127,14 @@ export class AppComponent {
             }
     };
     // создание динамического фильтра
-    searchCar = '';
+    inputText = 'Default';
     cars = [
         {name: 'Ford'},
         {name: 'Mazda'},
         {name: 'Audi'},
         {name: 'BMW'},
         {name: 'Mercedes'},
+        {name: 'ZAZ'},
     ];
 
 

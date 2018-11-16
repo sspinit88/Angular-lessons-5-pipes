@@ -12,6 +12,5 @@ export class PowPipe implements PipeTransform {
     //         declarations: [
     transform(value: any, powNum: number = 1, symb: string) {
         return symb + Math.pow(value, powNum);
-
     }
 }
