@@ -97,16 +97,28 @@ import {Component} from '@angular/core';
                    [(ngModel)]="inputText"
                    class="form-control"
                    style="margin-bottom: 20px">
+            <p>Введите название автомобиля:</p>
+            <input type="text"
+                   [(ngModel)]="nameCar"
+                   class="form-control"
+                   style="margin-bottom: 20px">
+            <p>Введите год выпуска автомобиля:</p>
+            <input type="text"
+                   [(ngModel)]="yearCar"
+                   class="form-control"
+                   style="margin-bottom: 20px">
+            <button class="btn btn-primary" (click)="addCar(nameCar, yearCar)">Добавить!</button>
             <hr>
             <span>Введено:</span>
             <p>{{inputText}}</p>
             <hr>
             <ul class="list-group">
                 <li class="list-group-item"
-                    *ngFor="let car of cars | carFilter:inputText:'year'; let i = index">
+                    *ngFor="let car of cars | carFilter:inputText:'name'; let i = index">
                     {{i + 1}} - <b>{{car.name}}</b> - <i>Модель {{car.year}} года выпуска</i>
                 </li>
             </ul>
+            <hr>
         </div>
     `
 })
@@ -136,6 +148,23 @@ export class AppComponent {
         {name: 'Mercedes', year: '1970'},
         {name: 'ZAZ', year: '1957'},
     ];
+
+    nameCar = '';
+    yearCar = '';
+
+    addCar(newCarname: HTMLInputElement, newCarYear: HTMLInputElement) {
+        console.log(typeof newCarname + ' ' + newCarname);
+
+        if (newCarname === '' || newCarYear === '') {
+            return null;
+        }
+
+        this.cars.push(
+            {name: newCarname, year: newCarYear}
+        );
+        this.nameCar = '';
+        this.yearCar = '';
+    }
 
 
 }
